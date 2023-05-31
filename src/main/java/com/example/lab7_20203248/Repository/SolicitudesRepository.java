@@ -18,4 +18,11 @@ public interface SolicitudesRepository extends JpaRepository<Solicitudes, Intege
             "VALUES (?1, ?2, ?3, ?4, ?5, 'pendiente')")
     void guardarSolicitud(int id, String solicitudProducto, Double solicitudMonto, LocalDate solicitudFecha, int usuariosId);
 
+    @Query(nativeQuery = true, value = "SELECT solicitud_estado FROM solicitudes WHERE id = ?1")
+    String verEstado(int idSolicitud);
+
+    @Transactional
+    @Modifying
+    @Query(nativeQuery = true, value = "UPDATE solicitudes SET solicitud_estado = 'aprobado' WHERE (id = ?1)")
+    void actualizarSolicitud(int idSolicitud);
 }

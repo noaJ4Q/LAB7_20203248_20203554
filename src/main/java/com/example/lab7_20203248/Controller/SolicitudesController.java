@@ -33,13 +33,31 @@ public class SolicitudesController {
         return ResponseEntity.status(HttpStatus.CREATED).body(responseMap);
     }
 
-    @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<HashMap<String, String>> gestionCrear(HttpServletRequest request){
-        HashMap<String, String> responseMap = new HashMap<>();
-        if (request.getMethod().equals("POST")){
-            responseMap.put("estado", "error");
-            responseMap.put("msg", "Solicitud nula");
+    @PutMapping("/aprobarSolicitud")
+    public ResponseEntity<HashMap<String, Object>> aprobar(@RequestParam("idSolicitud") Integer idSolicitud){
+
+        HashMap<String, Object> responseMap = new HashMap<>();
+
+        if (idSolicitud != null){
+            String estado = solicitudesRepository.verEstado(idSolicitud);
+            if (estado.equals("pendiente")){
+                solicitudesRepository.actualizarSolicitud(idSolicitud);
+                responseMap.put("id solicitud", idSolicitud);
+                return ResponseEntity.ok(responseMap);
+            }
+            else {
+                responseMap.put("solicitud ya atendida", idSolicitud);
+                return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).body(responseMap);
+            }
         }
+        else {
+            responseMap.put("estado", "error");
+            responseMap.put("msg", "ID nulo");
+        }
+
         return ResponseEntity.badRequest().body(responseMap);
+
     }
+
+
 }
