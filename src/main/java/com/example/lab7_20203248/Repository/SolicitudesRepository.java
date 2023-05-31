@@ -23,6 +23,16 @@ public interface SolicitudesRepository extends JpaRepository<Solicitudes, Intege
 
     @Transactional
     @Modifying
-    @Query(nativeQuery = true, value = "UPDATE solicitudes SET solicitud_estado = 'aprobado' WHERE (id = ?1)")
-    void actualizarSolicitud(int idSolicitud);
+    @Query(nativeQuery = true, value = "UPDATE solicitudes SET solicitud_estado = 'aprobada' WHERE (id = ?1)")
+    void aprobarSolicitud(int idSolicitud);
+
+    @Transactional
+    @Modifying
+    @Query(nativeQuery = true, value = "UPDATE solicitudes SET solicitud_estado = 'denegada' WHERE (id = ?1)")
+    void denegarSolicitud(int idSolicitud);
+
+    @Transactional
+    @Modifying
+    @Query(nativeQuery = true, value = "DELETE FROM solicitudes WHERE id = ?1")
+    void borrarSolicitud(int idSolicitud);
 }
