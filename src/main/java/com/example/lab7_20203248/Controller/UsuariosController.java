@@ -48,6 +48,4 @@ public class UsuariosController {
         return ResponseEntity.badRequest().body(responseMap);
     }
 
-
-
 }
