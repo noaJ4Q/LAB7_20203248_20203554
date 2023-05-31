@@ -16,10 +16,10 @@ public class Historial {
 
     @ManyToOne
     @JoinColumn(name = "creditos_id", nullable = false)
-    private Creditos creditos;
+    private Creditos creditos_id;
 
     @ManyToOne
     @JoinColumn(name = "usuarios_id", nullable = false)
-    private Usuarios usuarios;
+    private Usuarios usuarios_id;
 
 }

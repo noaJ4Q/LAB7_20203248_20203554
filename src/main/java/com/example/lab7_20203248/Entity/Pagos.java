@@ -21,16 +21,16 @@ public class Pagos {
 
     @ManyToOne
     @JoinColumn(name = "usuarios_id", nullable = false)
-    private Usuarios usuarios;
+    private Usuarios usuarios_id;
 
     @Column(name = "tipo_pago", length = 45)
-    private String tipoPago;
+    private String tipo_pago;
 
     @Column(name = "fecha")
     private Instant fecha;
 
     @ManyToOne
     @JoinColumn(name = "creditos_id", nullable = false)
-    private Creditos creditos;
+    private Creditos creditos_id;
 
 }

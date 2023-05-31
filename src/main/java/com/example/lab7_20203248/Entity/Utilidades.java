@@ -22,8 +22,8 @@ public class Utilidades {
     @Column(name = "fecha")
     private Instant fecha;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     @JoinColumn(name = "usuarios_id", nullable = false)
-    private Usuarios usuarios;
+    private Usuarios usuarios_id;
 
 }

@@ -15,6 +15,6 @@ public class Rol {
     private Integer id;
 
     @Column(name = "nombre_rol", length = 45)
-    private String nombreRol;
+    private String nombre_rol;
 
 }

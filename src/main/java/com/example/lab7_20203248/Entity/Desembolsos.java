@@ -17,13 +17,13 @@ public class Desembolsos {
     private Integer id;
 
     @Column(name = "monto_desembolso", length = 45)
-    private String montoDesembolso;
+    private String monto_desembolso;
 
     @Column(name = "fecha")
     private Instant fecha;
 
     @ManyToOne
     @JoinColumn(name = "creditos_id", nullable = false)
-    private Creditos creditos;
+    private Creditos creditos_id;
 
 }

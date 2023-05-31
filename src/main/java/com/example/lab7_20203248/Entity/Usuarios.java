@@ -22,6 +22,6 @@ public class Usuarios {
     private String estado_logico;
     @ManyToOne
     @JoinColumn(name = "rol_id")
-    private Rol rol;
+    private Rol rol_id;
     private LocalDateTime fecha_registro;
 }
