@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -23,5 +24,5 @@ public class Usuarios {
     @ManyToOne
     @JoinColumn(name = "rol_id")
     private Rol rol_id;
-    private LocalDateTime fecha_registro;
+    private LocalDate fecha_registro;
 }

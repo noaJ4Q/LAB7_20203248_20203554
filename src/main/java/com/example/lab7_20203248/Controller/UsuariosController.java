@@ -38,16 +38,4 @@ public class UsuariosController {
 
     }
 
-    @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<HashMap<String, String>> gestionCrear(HttpServletRequest request){
-        HashMap<String, String> responseMap = new HashMap<>();
-        if (request.getMethod().equals("POST")){
-            responseMap.put("estado", "error");
-            responseMap.put("msg", "Usuario nulo");
-        }
-        return ResponseEntity.badRequest().body(responseMap);
-    }
-
-
-
 }
