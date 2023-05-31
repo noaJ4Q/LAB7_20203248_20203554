@@ -32,8 +32,8 @@ public class UsuariosController {
     public ResponseEntity<HashMap<String, Object>> crear(@RequestBody Usuarios usuarios){
 
         HashMap<String, Object> responseMap = new HashMap<>();
-        Usuarios u = usuariosRepository.save(usuarios);
-        responseMap.put("id creado:", u.getId());
+        usuariosRepository.guardar(usuarios.getId(), usuarios.getNombre(), usuarios.getApellido(), usuarios.getCorreo(), usuarios.getUsername(), usuarios.getPassword(), usuarios.getEstado_logico(), usuarios.getRol_id().getId(), usuarios.getFecha_registro());
+        responseMap.put("id creado:", usuarios.getId());
         return ResponseEntity.status(HttpStatus.CREATED).body(responseMap);
 
     }
