@@ -88,7 +88,7 @@ public class PagosController {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<HashMap<String, String>> gestionCrear(HttpServletRequest request){
         HashMap<String, String> responseMap = new HashMap<>();
-        if (request.getMethod().equals("POST") || request.getMethod().equals("PUT") || request.getMethod().equals("DELETE")){
+        if (request.getMethod().equals("POST")){
             responseMap.put("estado", "error");
             responseMap.put("msg", "Parámetro(s) nulos");
         }
