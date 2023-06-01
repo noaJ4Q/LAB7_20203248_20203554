@@ -38,7 +38,6 @@ public class UsuariosController {
         HashMap<String, Object> responseMap = new HashMap<>();
         List<Usuarios> lista = usuariosRepository.findAll();
         List<Rol> listaR = rolRepository.findAll();
-        HashMap<String, Object> hashMap = new HashMap<>();
         boolean checkId = true;
         boolean checkRol = true;
         for (Usuarios u: lista){
@@ -56,14 +55,14 @@ public class UsuariosController {
             }
         }
         if(!checkId || usuarios.getRol_id()==null || usuarios.getRol_id().getId()==null || !checkRol){
-            hashMap.put("result", "error");
+            responseMap.put("result", "error");
             if(!checkId) {
-                hashMap.put("msg", "Ingrese un id válido");
+                responseMap.put("msg", "Ingrese un id válido");
             }
             if(usuarios.getRol_id()==null || !checkRol || usuarios.getRol_id().getId()==null){
-                hashMap.put("msg", "Ingrese un rol válido");
+                responseMap.put("msg", "Ingrese un rol válido");
             }
-            return ResponseEntity.badRequest().body(hashMap);
+            return ResponseEntity.badRequest().body(responseMap);
         }
         if(contador == 0){
             rolRepository.save(usuarios.getRol_id());
