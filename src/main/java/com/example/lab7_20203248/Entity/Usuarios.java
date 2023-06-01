@@ -13,6 +13,7 @@ import java.time.Instant;
 public class Usuarios {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private int id;
     private String nombre;
     private String apellido;
@@ -21,7 +22,7 @@ public class Usuarios {
     private String password;
     private String estado_logico;
     @ManyToOne
-    @JoinColumn(name = "rol_id")
+    @JoinColumn(name = "rol_id", nullable = false)
     private Rol rol_id;
     private Instant fecha_registro;
 }
