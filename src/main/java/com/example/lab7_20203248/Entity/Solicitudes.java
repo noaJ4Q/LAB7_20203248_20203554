@@ -3,7 +3,8 @@ package com.example.lab7_20203248.Entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import java.time.LocalDate;
+
+import java.time.Instant;
 
 @Getter
 @Setter
@@ -22,7 +23,7 @@ public class Solicitudes {
     private Double solicitud_monto;
 
     @Column(name = "solicitud_fecha")
-    private LocalDate solicitud_fecha;
+    private Instant solicitud_fecha;
 
     @ManyToOne
     @JoinColumn(name = "usuarios_id", nullable = false)

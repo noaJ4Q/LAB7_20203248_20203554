@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
+import java.time.Instant;
 
 @Repository
 public interface AccionesRepository extends JpaRepository<Acciones, Integer> {
@@ -15,5 +15,5 @@ public interface AccionesRepository extends JpaRepository<Acciones, Integer> {
     @Transactional
     @Modifying
     @Query(nativeQuery = true, value = "INSERT INTO acciones (id, monto, fecha, usuarios_id) VALUES (?1, ?2, ?3, ?4)")
-    void guardar(int id, Double monto, LocalDate fecha, int idUsuario);
+    void guardar(int id, Double monto, Instant fecha, int idUsuario);
 }
