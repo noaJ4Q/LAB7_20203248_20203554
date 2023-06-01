@@ -25,7 +25,9 @@ public class SolicitudesController {
     public ResponseEntity<HashMap<String, Object>> guardar(@RequestBody Solicitudes solicitud){
 
         HashMap<String, Object> responseMap = new HashMap<>();
-        solicitudesRepository.guardarSolicitud(solicitud.getId(), solicitud.getSolicitud_producto(), solicitud.getSolicitud_monto(), solicitud.getSolicitud_fecha(), solicitud.getUsuarios_id().getId());
+        //solicitudesRepository.guardarSolicitud(solicitud.getId(), solicitud.getSolicitud_producto(), solicitud.getSolicitud_monto(), solicitud.getSolicitud_fecha(), solicitud.getUsuarios_id().getId());
+        solicitud.setSolicitud_estado("pendiente");
+        solicitudesRepository.save(solicitud);
 
         responseMap.put("Monto solicitado", solicitud.getSolicitud_monto());
         responseMap.put("id", solicitud.getId());
@@ -111,7 +113,7 @@ public class SolicitudesController {
         return ResponseEntity.badRequest().body(responseMap);
 
     }
-
+/*
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<HashMap<String, String>> gestionCrear(HttpServletRequest request){
         HashMap<String, String> responseMap = new HashMap<>();
@@ -121,5 +123,5 @@ public class SolicitudesController {
         }
         return ResponseEntity.badRequest().body(responseMap);
     }
-
+ */
 }
