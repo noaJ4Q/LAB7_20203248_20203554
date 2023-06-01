@@ -44,15 +44,17 @@ public class UsuariosController {
         for (Usuarios u: lista){
             if(u.getId()==usuarios.getId()){
                 checkId = false;
+                break;
             }
         }
         int contador = 0;
         for (Rol r: listaR){
-            if(r.getId()==usuarios.getRol_id().getId()){
+            if(r.getId().equals(usuarios.getRol_id().getId())){
                 if(!r.getNombre_rol().equals(usuarios.getRol_id().getNombre_rol())) {
                     checkRol = false;
                 }
                 contador ++;
+                break;
             }
         }
         if(!checkId || usuarios.getRol_id()==null || usuarios.getRol_id().getId()==null || !checkRol){
